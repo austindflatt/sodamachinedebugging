@@ -1,4 +1,7 @@
 import os
+from customer import Customer
+from cans import Can
+
 
 
 def simulation_main_menu():
@@ -75,7 +78,7 @@ def soda_selection(inventory):
         i = 1
         for can in soda_options:
             print("\n\tEnter -{i}- for {can} : ${can.price}")
-            i++
+            i += 1
         user_selection = try_parse_int(input("Selection:"))
         validated_user_selection = validate_coin_choice(user_selection, soda_options)
     return validated_user_selection[1]
@@ -153,8 +156,8 @@ def validate_coin_selection(selection):
     return switcher.get(selection, (False, None))
 
 
-def end_message(soda_name, change_amount):
+def end_message(selected_soda, change_amount):
     """Closing message displaying name of soda purchased and amount of change returned"""
-    print(f'Enjoy your {soda}')
+    print(f'Enjoy your {selected_soda}')
     if change_amount >= 0:
         print(f'Dispensing ${change_amount}')
